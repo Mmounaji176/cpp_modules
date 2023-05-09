@@ -6,7 +6,7 @@
 /*   By: mmounaji <mmounaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:43:42 by mmounaji          #+#    #+#             */
-/*   Updated: 2023/05/09 17:45:30 by mmounaji         ###   ########.fr       */
+/*   Updated: 2023/05/09 17:51:13 by mmounaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int main(void)
         if (line.compare("ADD") == 0)
             messi.ADD();
         else if (line.compare("SEARCH") == 0) {
-            messi.printContacts();
+            messi.displayAll();
             messi.SEARCH();
         }
         std::cout << "> " << std::flush;

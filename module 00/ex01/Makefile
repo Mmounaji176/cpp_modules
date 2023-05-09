@@ -3,7 +3,7 @@ RM= rm -rf
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC= Contact PhoneBook\
+SRC= Contact PhoneBook main\
 	 
 OBJ= $(SRC:=.o)
 
