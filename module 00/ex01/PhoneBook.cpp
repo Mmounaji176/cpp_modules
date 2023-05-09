@@ -6,7 +6,7 @@
 /*   By: mmounaji <mmounaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 16:31:25 by mmounaji          #+#    #+#             */
-/*   Updated: 2023/05/08 18:36:40 by mmounaji         ###   ########.fr       */
+/*   Updated: 2023/05/09 15:36:47 by mmounaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@ int		PhoneBook::get_index(void)
 void	PhoneBook::ADD(void)
 {
 	static int index;
-	this->contact[index % 8].set_data(this->contact[index % 8].);
+	this->contact[index % 8].set_data(index % 8);
 	index++;
+}
+
+void    PhoneBook::SEARCH(void){
+    int i = this->get_index();
+    this->contact[i].display_contact();
 }

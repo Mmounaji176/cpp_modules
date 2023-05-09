@@ -6,22 +6,33 @@
 /*   By: mmounaji <mmounaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 14:14:01 by mmounaji          #+#    #+#             */
-/*   Updated: 2023/05/08 20:26:11 by mmounaji         ###   ########.fr       */
+/*   Updated: 2023/05/09 15:43:22 by mmounaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
-void	Contact::display_contacts(void)
+std::string Contact::print(std::string str)
 {
-	
+    if (str.length() > 10)
+        return (str.substr(0, 9) + ".");
+    return (str);
 }
 
-void	Contact::display_contact(Contact contact)
+void	Contact::info(void)
+{
+	std::cout << "|" << std::setw(10) << this->index;
+	std::cout << "|" << std::setw(10) << Contact::print(this->first_name);
+	std::cout << "|" << std::setw(10) << Contact::print(this->last_name);
+	std::cout << "|" << std::setw(10) << Contact::print(this->nickname);
+	std::cout << "|" << std::endl;
+}
+
+void	Contact::display_contact(void)
 {
     if (this->last_name.empty() || this->nickname.empty()||this->first_name.empty() )
         return ;
-    std::cout << "contact number"      << index << " :" << std::endl;
+    std::cout << "contact number"     << this->index << " :" << std::endl;
     std::cout << "First Name  : "   << this->first_name << std::endl;
     std::cout << "Last Name   : "   << this->last_name  << std::endl;
     std::cout << "Nickname    : "   << this->nickname   << std::endl;
