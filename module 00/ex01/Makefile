@@ -1,7 +1,7 @@
 NAME= PhoneBook
 RM= rm -rf
 CC = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRC= Contact PhoneBook main\
 	 

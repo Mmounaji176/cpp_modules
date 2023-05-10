@@ -6,7 +6,7 @@
 /*   By: mmounaji <mmounaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 14:32:01 by mmounaji          #+#    #+#             */
-/*   Updated: 2023/05/09 17:51:55 by mmounaji         ###   ########.fr       */
+/*   Updated: 2023/05/10 17:15:58 by mmounaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ class Contact
 		std::string 	phone_number;
 		std::string 	darkest_secret;
 		int				index;
-	public:
 		std::string		assign_data(std::string str);
+		std::string 	print(std::string str);
+	public:
 		void			set_data(int index);
 		void			info(void);
 		void			display_contact(void);
-		std::string 	print(std::string str);
 };
 #endif

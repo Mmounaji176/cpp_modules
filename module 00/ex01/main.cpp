@@ -6,7 +6,7 @@
 /*   By: mmounaji <mmounaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:43:42 by mmounaji          #+#    #+#             */
-/*   Updated: 2023/05/09 17:51:13 by mmounaji         ###   ########.fr       */
+/*   Updated: 2023/05/10 15:47:33 by mmounaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,15 @@ int main(void)
     std::cout << "EXIT\t: to quite the PhoneBook." << std::endl;
     std::cout << "----------------------------------" << std::endl;
     std::cout << std::endl;
-    while (line.compare("EXIT")) {
+    while (std::getline(std::cin, line)) {
         if (line.compare("ADD") == 0)
             messi.ADD();
         else if (line.compare("SEARCH") == 0) {
             messi.displayAll();
             messi.SEARCH();
         }
-        std::cout << "> " << std::flush;
-        std::cin >> line;
-    }
+		else if (line.compare("EXIT") == 0)
+			exit(1);
+	}
     return 0;
 }

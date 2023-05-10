@@ -6,7 +6,7 @@
 /*   By: mmounaji <mmounaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 16:31:25 by mmounaji          #+#    #+#             */
-/*   Updated: 2023/05/09 17:55:37 by mmounaji         ###   ########.fr       */
+/*   Updated: 2023/05/10 14:55:04 by mmounaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,28 @@
 
 int		PhoneBook::get_index(void)
 {
-	int     index;
+	std::string     index;
+	int x;
     bool    valid = false;
     do
     {
         std::cout << "Please enter the contact index: " << std::endl;
 		std::cout << "====>";
-        std::cin >> index;
-        if (index >= 0 && index <= 8)
+        std::getline(std::cin, index);
+    	 x = atoi(index.c_str());
+		if (x >= 0 && x <= 8)
             valid = true;
 		else {
             std::cout << "Invalid index : try again" << std::endl;
-            std::cin.clear();
         }
     } while (!valid);
-    return (index);
+    return (x);
 }
 void	PhoneBook::displayAll(void)
 {
 	for (int i = 0; i < 8; i++)
 		this->contact[i].info();
+	std::cout << std::endl;
 }
 
 void	PhoneBook::ADD(void)
