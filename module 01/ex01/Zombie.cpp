@@ -12,7 +12,7 @@
 
 # include "Zombie.hpp"
 
-Zombie::Zombie(std::string _name): name(_name)
+Zombie::Zombie()
 {
 	std::cout << "Constructor called \n" << std::endl;
 }
@@ -25,4 +25,7 @@ Zombie::~Zombie()
 void	Zombie::announce(void)
 {
 	std::cout << this->name << ":  BraiiiiiiinnnzzzZ..." << std::endl;
+}
+void    Zombie::setter(std::string _name) {
+    this->name = _name;
 }

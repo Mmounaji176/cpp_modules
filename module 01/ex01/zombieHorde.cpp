@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmounaji <mmounaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/11 14:13:31 by mmounaji          #+#    #+#             */
-/*   Updated: 2023/05/11 20:58:48 by mmounaji         ###   ########.fr       */
+/*   Created: 2023/05/12 13:57:55 by mmounaji          #+#    #+#             */
+/*   Updated: 2023/05/12 14:04:16 by mmounaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "Zombie.hpp"
+#include "Zombie.hpp"
 
-Zombie::Zombie(std::string _name): name(_name)
-{
-	std::cout << "Constructor called \n" << std::endl;
-}
-
-Zombie::~Zombie()
-{
-	std::cout << "Destructor called \n" << std::endl;
-}
-
-void	Zombie::announce(void)
-{
-	std::cout << this->name << ":  BraiiiiiiinnnzzzZ..." << std::endl;
+Zombie* zombieHorde( int N, std::string name ) {
+    if (N <= 0)
+        return NULL;
+    Zombie *zoombiess = new Zombie[N];
+    if (zoombiess == NULL)
+        return NULL:
+    for (int index = 0; index < N ; index++)
+        zoombiess[index].setter(name);
+    return zoombiess;
 }

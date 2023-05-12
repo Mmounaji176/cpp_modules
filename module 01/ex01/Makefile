@@ -1,10 +1,10 @@
-NAME= BraiiiiiiinnnzzzZ
+NAME= Moar_brainz!
 RM= rm -rf
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC= main Zombie newZombie randomChump\
-	 
+SRC= main Zombie  zombieHorde \
+
 OBJ= $(SRC:=.o)
 
 all: $(NAME)
@@ -12,8 +12,8 @@ all: $(NAME)
 %.o:%.cpp
 	$(CC) $(CFLAGS) -c $<
 
-$(NAME): $(OBJ) 
-	$(CC) $(CFLAGS)  $(OBJ) -o $(NAME) 
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS)  $(OBJ) -o $(NAME)
 
 clean:
 	$(RM) $(OBJ)
