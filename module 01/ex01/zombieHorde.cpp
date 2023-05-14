@@ -16,9 +16,11 @@ Zombie* zombieHorde( int N, std::string name ) {
     if (N <= 0)
         return NULL;
     Zombie *zoombiess = new Zombie[N];
-    if (zoombiess == NULL)
+    if (zoombiess == NULL){
         return NULL:
-    for (int index = 0; index < N ; index++)
+    }
+    for (int index = 0; index < N ; index++){
         zoombiess[index].setter(name);
+    }
     return zoombiess;
 }
