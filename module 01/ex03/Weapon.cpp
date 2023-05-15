@@ -1,15 +1,22 @@
 #include "Weapon.hpp"
 
-Weapon::Weapon(std::string _type){
-    if (_type == nullptr)
-        return ;
-}
-const std::string& Weapon::getType()
+Weapon::Weapon(std::string str)
 {
-    const std::string& ref = this->type;
-    return ref;
+    std::cout << "Constructor called" << std::endl;
+    setType(str);
 }
 
-void    Weapon::setType(std::string str){
+Weapon::~Weapon()
+{
+    std::cout << "Destructor has been called" << std::endl;
+}
+
+const std::string&  Weapon::getType()
+{
+    return (this->type);
+}
+
+void    Weapon::setType(std::string str)
+{
     this->type = str;
 }
