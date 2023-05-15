@@ -1,39 +1,30 @@
-#include "sed.hpp"
+#include "Sed.hpp"
 
 int main(int ac, char ** av)
 {
+    Sed obj;
+    std::string s1 = av[2];
+    std::string s2 = av[3];
+    std::string newContent;
     if (ac != 4)
     {
         std::cerr << " bad number of arguments";
         return (1);
     }
-    std::ifstream ifs(argv[1]);
-    if (!ifs.is_open())
-    {
-        std::cerr << "Error: Unable to open input file" << std::endl;
+    std::ifstream ifs(av[1]);
+    if (!ifs.is_open()) {
+        std::cerr << "unable to open input file" << std::endl;
         return 1;
     }
-
-    // Perform the string replacement
-    std::string result;
-    std::string from = argv[2];
-    std::string to = argv[3];
-
-    std::getline(ifs, result, '\0');
+    std::getline(ifs, newContent, '\0');
     ifs.close();
-
-    result = obj.ft_replace(result, from, to);
-    // Open the output file
-    std::ofstream ofs(argv[1] + std::string(".replace"));
-    if (!ofs.is_open())
-    {
-        std::cerr << "Error: Unable to open output file" << std::endl;
+    newContent = obj.MyReplace(newContent, s1, s2);
+    std::ofstream ofs(av[1] + std::string(".replace"));
+    if (!ofs.is_open()){
+        std::cerr << "unable to open output file" << std::endl;
         return 1;
     }
-
-    // Write the modified string to the output file
-    ofs << result;
+    ofs << newContent;
     ofs.close();
-
     return 0;
 }

@@ -1,9 +1,9 @@
-NAME= Sed_is_for_losers
+NAME= Harl
 RM= rm -rf
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3
 
-SRC= main Sed \
+SRC= main Harl \
 
 OBJ= $(SRC:=.o)
 
