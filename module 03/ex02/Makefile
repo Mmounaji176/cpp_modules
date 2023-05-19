@@ -1,9 +1,9 @@
-NAME= Serena,_my_love!
+NAME=  Repetitive_work
 RM= rm -rf
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC= main ClapTrap ScavTrap \
+SRC= main ClapTrap  FragTrap\
 	 
 OBJ= $(SRC:=.o)
 
