@@ -25,6 +25,8 @@ int main(void)
     std::cout << "----------------------------------" << std::endl;
     std::cout << std::endl;
     while (std::getline(std::cin, line)) {
+        if (std::cin.eof())
+            break;
         if (line.compare("ADD") == 0)
             messi.ADD();
         else if (line.compare("SEARCH") == 0) {

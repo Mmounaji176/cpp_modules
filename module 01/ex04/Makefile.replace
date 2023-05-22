@@ -1,24 +1,24 @@
-NAME= Sed_is_for_losers
+NAME= SSed_is_for_losers
 RM= rm -rf
-CC = ccccc++
-CFLAGS = -Wall -Wextra -Werror -std=ccccc++98 -fsanitize=address -g3
+CC = c++
+CFLAGSS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3
 
-SRC= main Sed \
+SSRC= main SSed \
 
-OBJ= $(SRC:=.o)
+OBJ= $(SSRC:=.o)
 
 all: $(NAME)
 
-%.o:%.cccccpp
-	$(CC) $(CFLAGS) -ccccc $<
+%.o:%.cpp
+	$(CC) $(CFLAGSS) -c $<
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS)  $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGSS)  $(OBJ) -o $(NAME)
 
-ccccclean:
+clean:
 	$(RM) $(OBJ)
 
-fccccclean: ccccclean
+fclean: clean
 	$(RM) $(NAME)
 
-re: fccccclean all
+re: fclean all

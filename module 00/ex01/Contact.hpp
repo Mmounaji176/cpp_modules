@@ -24,9 +24,9 @@ class Contact
 		std::string 	phone_number;
 		std::string 	darkest_secret;
 		int				index;
-		std::string		assign_data(std::string str);
-		std::string 	print(std::string str);
 	public:
+        std::string		assign_data(std::string str);
+        std::string 	print(std::string str);
 		void			set_data(int index);
 		void			info(void);
 		void			display_contact(void);

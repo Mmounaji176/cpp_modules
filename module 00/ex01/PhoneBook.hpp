@@ -23,7 +23,6 @@ class PhoneBook
 		void	ADD(void);
 		void	displayAll(void);
 		void	SEARCH(void);
-	
 };
 
 #endif

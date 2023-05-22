@@ -44,15 +44,15 @@ void	Contact::display_contact(void)
 
 std::string Contact::assign_data(std::string str)
 {
-	std::string		line = "xd";
+	std::string		line = "";
 	bool	done = false;
 	while (!done)
 	{
 		std::cout << str << std::endl;
 		std::cout << "=======> ";
 		std::getline(std::cin, line);
-		
-		//std::cout << std::endl;
+        if (std::cin.eof())
+            exit(EXIT_FAILURE);
 		if (line.empty())
 			std::cout << "invalid input : try again" << std::endl;	
 		else

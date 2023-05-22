@@ -22,7 +22,11 @@ int		PhoneBook::get_index(void)
         std::cout << "Please enter the contact index: " << std::endl;
 		std::cout << "====>";
         std::getline(std::cin, index);
-    	 x = atoi(index.c_str());
+        if (std::cin.eof())
+            exit(1);
+        if (std::cin.eof())
+            break;
+    	x = atoi(index.c_str());
 		if (x >= 0 && x <= 8)
             valid = true;
 		else {
