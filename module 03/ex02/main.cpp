@@ -1,6 +1,3 @@
 #include "FragTrap.hpp"
 
-int main()
-{
-	FragTrap l;
-}
+int main() { FragTrap l; }

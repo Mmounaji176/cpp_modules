@@ -1,9 +1,9 @@
 NAME=  ex00
 RM= rm -rf
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3
+CFLAGS =  -std=c++98 -fsanitize=address -g3
 
-SRC= main Animal\
+SRC= main Animal Dog Cat WrongCat WrongAnimal\
 
 OBJ= $(SRC:=.o)
 
