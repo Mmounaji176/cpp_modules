@@ -1,17 +1,15 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string __name)
-    : name(__name), hit_points(10), energy_points(10), attack_damage(0) {
+ClapTrap::ClapTrap(std::string __name): name(__name), hit_points(10), energy_points(10), attack_damage(0) {
   std::cout << "Claptrap " << this->name << " has been created! " << std::endl;
 }
 
-ClapTrap::ClapTrap()
-    : name("default"), hit_points(10), energy_points(10), attack_damage(0) {
-  std::cout << "default constructor called" << std::endl;
+ClapTrap::ClapTrap(): name("default"), hit_points(10), energy_points(10), attack_damage(0) {
+  std::cout << "Claptrap default constructor called" << std::endl;
 }
 ClapTrap::ClapTrap(const ClapTrap &claptrap) {
   *this = claptrap;
-  std::cout << "copy constructor called" << std::endl;
+  std::cout << "Claptrap copy constructor called" << std::endl;
 }
 
 ClapTrap::~ClapTrap() {

@@ -1,21 +1,20 @@
-#include "DiamondTrap.hpp"
+# include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap( std::string name ) : ClapTrap( name ), FragTrap( name ), ScavTrap( name )
+DiamondTrap::DiamondTrap( std::string name ) :FragTrap( name ), ScavTrap( name )
 {
     this->_name = name;
-    this->ClapTrap::_name = name + "_clap_name";
+    ClapTrap::name = name + "_clap_name";
+    FragTrap::hit_points = 100;
+    ScavTrap::energy_points = 50;
+    FragTrap::attack_damage = 30;
     
-    FragTrap::_hitPoints = 100;
-    ScavTrap::_energyPoints = 50;
-    FragTrap::_attackDamage = 30;
-    
-    std::cout << "# DiamondTrap # - " << this->_name << " constructed." << std::endl;
+    std::cout << "DiamondTrap " << this->_name << " constructed." << std::endl;
 }
 
 DiamondTrap::~DiamondTrap() {
-    std::cout << "DiamondTrap" << this->_name << " is dead." << std::endl;
+    std::cout << "DiamondTrap " << this->_name << " is dead." << std::endl;
 }
 
 void    DiamondTrap::whoAmI( void ) {
-    std::cout << "I am a DiamondTrap named " << this->_name << ", ClapTrap name: " << ClapTrap::_name << std::endl;
+    std::cout << "I am a DiamondTrap named " << this->_name << ", ClapTrap name: " << ClapTrap::name << std::endl;
 }

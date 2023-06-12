@@ -1,27 +1,27 @@
 #include "Cat.hpp"
 
-Cat::Cat(): Animal(cat) {
-  try {
-      this->brain = new Brain();    
-  }
-    catch (const std::bad_alloc& e) {
-        std::cout << "Memory Allocation is failed : " << e.what() << std::endl;
-    }
+Cat::Cat(){
+  this->type = "cat";
+  this->brain = new Brain();    
   std::cout << "Cat object created" << std::endl;
 }
 
 Cat::Cat(const Cat &obj) {
-  *this = obj;
   std::cout << "Cat object created" << std::endl;
+  *this = obj;
 }
 Cat::~Cat() { 
-  delete  this->_brain;
+  delete  this->brain;
   std::cout << "Cat's destructor called " << std::endl; 
 }
 
 Cat &Cat::operator=(const Cat &obj) {
   if (this != &obj)
+  {
     this->type = obj.type;
+    delete this->brain;
+    this->brain = new Brain(*obj.brain);
+  }
   return *this;
 }
 

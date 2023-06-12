@@ -4,7 +4,7 @@
 #include "Brain.hpp"
 class Dog: public Animal{
   private:
-    Br
+    Brain*  brain;
   public:
     Dog();
     ~Dog();

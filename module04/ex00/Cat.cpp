@@ -1,7 +1,6 @@
 #include "Cat.hpp"
 
-Cat::Cat(): Animal("cat") {
-
+Cat::Cat(){
   std::cout << "Cat object created" << std::endl;
 }
 

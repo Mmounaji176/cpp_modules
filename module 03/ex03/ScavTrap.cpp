@@ -7,7 +7,7 @@ ScavTrap::ScavTrap() : ClapTrap("default") {
   std::cout << "scavtrap " << this->name << " has been created! " << std::endl;
 }
 
-ScavTrap::ScavTrap(std::string __name) : {
+ScavTrap::ScavTrap(std::string __name) {
   this->name = __name;
   this->hit_points = 100;
   this->energy_points = 50;
