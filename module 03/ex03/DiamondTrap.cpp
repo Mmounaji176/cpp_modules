@@ -1,6 +1,6 @@
 # include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap( std::string name ) :FragTrap( name ), ScavTrap( name )
+DiamondTrap::DiamondTrap( std::string name ) :ScavTrap( name ), FragTrap( name )
 {
     this->_name = name;
     ClapTrap::name = name + "_clap_name";

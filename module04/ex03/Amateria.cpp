@@ -1,4 +1,4 @@
-#include "Amateria.hpp"
+#include "AMateria.hpp"
 
 AMateria::AMateria() {
     std::cout << "AMateria default constructor called" << std::endl;
@@ -32,5 +32,5 @@ void        AMateria::use(ICharacter& target) {
 }
 
 AMateria*   AMateria::clone() const {
-    return new AMateria(*this);
+    return (AMateria*)this;
 }
