@@ -1,9 +1,9 @@
 NAME=  ex03
 RM= rm -rf
-CC = c++
-CFLAGS =  -std=c++98 -fsanitize=address -g3
+CPP = c++
+CPPFLAGS =  -std=c++98 -Wall -Wextra -Werror
 
-SRC= main AMateria Cure Ice  ICharacter\
+SRC= main AMateria Cure Ice  Character MateriaSource \
 
 OBJ= $(SRC:=.o)
 

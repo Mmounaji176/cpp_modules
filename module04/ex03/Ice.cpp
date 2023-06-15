@@ -4,7 +4,7 @@ Ice::Ice() {
     std::cout << "Ice default constructor called" << std::endl;
 }
  
-Ice::Ice(std::string const & type): _type(type) {
+Ice::Ice(std::string const & type): AMateria(type){
     std::cout << "Ice object created" << std::endl;
 }
 
@@ -22,10 +22,6 @@ Ice    &Ice::operator=(const Ice &obj) {
     if (this != &obj)
         this->_type = obj._type;
     return *this;
-}
-
-std::string const & Ice::getType() const {
-    return this->_type;
 }
 
 void        Ice::use(ICharacter& target) {

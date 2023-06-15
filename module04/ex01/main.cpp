@@ -8,8 +8,11 @@
 
 int main()
 {
-Brain brain;
-    system("leaks ex01");
+Dog basic;
+{
+    Dog tmp = basic;
+}
+
 }
 // #include <iostream>
 // class ShallowCopy {

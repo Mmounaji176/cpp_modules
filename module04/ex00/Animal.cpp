@@ -4,6 +4,10 @@ Animal::Animal() : type("animal") {
   std::cout << "Animal object created" << std::endl;
 }
 
+Animal::Animal(std::string type) : type(type) {
+  std::cout << "Animal object created" << std::endl;
+}
+
 Animal::Animal(const Animal &obj) {
   *this = obj;
   std::cout << "Animal object created" << std::endl;

@@ -1,3 +1,10 @@
+#ifndef MATERIASOURCE_HPP
+# define MATERIASOURCE_HPP
+
+#include "Ice.hpp"
+#include "Cure.hpp"
+#include "IMateriaSource.hpp"
+
 class MateriaSource : public IMateriaSource
 {
     private:
@@ -14,3 +21,5 @@ class MateriaSource : public IMateriaSource
         AMateria*       createMateria( std::string const & type );
         void            learnMateria( AMateria* );
 };
+
+#endif
