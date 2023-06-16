@@ -1,6 +1,8 @@
 #include "Dog.hpp"
 
-Dog::Dog(): Animal("dog") {
+Dog::Dog(){
+  this->type = "dog";
+  this->brain = new Brain();
   std::cout << "Dog object created" << std::endl;
 }
 
@@ -15,7 +17,11 @@ Dog::~Dog() {
 
 Dog &Dog::operator=(const Dog &obj) {
   if (this != &obj)
+  {
     this->type = obj.type;
+    delete this->brain;
+    this->brain = new Brain(*obj.brain);
+  }  
   return *this;
 }
 

@@ -1,7 +1,7 @@
 #include "Brain.hpp"
 
 Brain::Brain(){
-    std::cout << "Brain has been created"<< std::endl
+    std::cout << "Brain has been created"<< std::endl;
 }
 
 Brain::~Brain(){
