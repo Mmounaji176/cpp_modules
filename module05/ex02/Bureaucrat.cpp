@@ -62,7 +62,18 @@ const char *Bureaucrat::GradeTooLowException::what() const throw() {
   return ("You underrated the grade, which is limited in the range [1, 150]");
 }
 
-void  Bureaucrat::signForm(Form &form) {
+void  Bureaucrat::executeForm(AForm const & form) {
+  if (form.getSigned() == false)
+    std::cout << "Form " << form.getName() << " is not signed" << std::endl;
+  else if (form.getGradeToExecute() < this->grade)
+    std::cout << "Bureaucrat " << this->name << " cannot execute form " << form.getName() << " because his grade is too low" << std::endl;
+  else {
+    std::cout << "Bureaucrat " << this->name << " executes form " << form.getName() << std::endl;
+    form.execute(*this);
+  }
+}
+
+void  Bureaucrat::signForm(AForm &form) {
   if (form.getSigned())
     std::cout << "Form " << form.getName() << " is already signed" << std::endl;
   else if (form.getGradeToSign() < this->grade)
