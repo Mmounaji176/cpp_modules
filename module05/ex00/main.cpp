@@ -6,7 +6,8 @@ int main(void) {
     std::cout << b << std::endl;
   } catch (std::exception &e) {
     std::cout << "Grade out of range " << e.what() << std::endl;
-    return (0);
   }
+  // std::cout << b << std::endl; // this line will not be executed bs of stack unwinding
+  std::cout << "--------------------program continue-------------------------" << std::endl;
   return (0);
 }

@@ -34,6 +34,7 @@ std::ostream&    operator<<(std::ostream &out, const Form &form) {
     return out;
 }
 
+
 const char *Form::GradeTooHighException::what() const throw() {
   return ("You overrated the grade, which is limited in the range [1, 150]");
 }
@@ -59,7 +60,7 @@ std::string Form::getName() const {
 }
 
 void    Form::beSigned(const Bureaucrat &bureaucrat) {
-    if (bureaucrat.getGrade() > this->gradeToSign)
+    if (bureaucrat.getGrade() >= this->gradeToSign)
         throw Form::GradeTooLowException();
     this->isSigned = true;
 }

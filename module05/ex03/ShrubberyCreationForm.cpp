@@ -1,16 +1,16 @@
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string _target):   AForm("ShrubberyCreationForm", 145, 137), target(_target)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string _target): target(_target),  AForm("ShrubberyCreationForm", 145, 137) 
 {
      std::cout << "ShrubberyCreationForm constructor called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm() :  AForm("ShrubberyCreationForm", 145, 137), target("default")
+ShrubberyCreationForm::ShrubberyCreationForm() : target("default"), AForm("ShrubberyCreationForm", 145, 137) 
 {
     std::cout << "ShrubberyCreationForm default constructor called" << std::endl;
 }
 
-std::string ShrubberyCreationForm::getTarget() const
+ShrubberyCreationForm::getTarget() const
 {
     return this->target;
 }
@@ -19,16 +19,13 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
     std::cout << "ShrubberyCreationForm destructor called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy) :  AForm(copy.getName(), copy.getGradeToSign(), copy.getGradeToExecute()) ,target(copy.target)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy) : target(copy.target), AForm(copy.getName(), copy.getGradeToSign(), copy.getGradeToExecute()) 
 {
     std::cout << "ShrubberyCreationForm copy constructor called" << std::endl;
 }
 
 ShrubberyCreationForm&   ShrubberyCreationForm::operator=(const ShrubberyCreationForm &copy) 
 {
-    if (this == &copy)
-        return *this;
-    target = copy.target;
     std::cout << "ShrubberyCreationForm assignation operator called" << std::endl;
     return *this;
 }

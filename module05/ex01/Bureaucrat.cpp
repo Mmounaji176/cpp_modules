@@ -55,11 +55,11 @@ std::ostream &operator<<(std::ostream &std, Bureaucrat const &b) {
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw() {
-  return ("You overrated the grade, which is limited in the range [1, 150]");
+  return ("the grade is too high, which is limited in the range [1, 150]");
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw() {
-  return ("You underrated the grade, which is limited in the range [1, 150]");
+  return ("the grade is too low, which is limited in the range [1, 150]");
 }
 
 void  Bureaucrat::signForm(Form &form) {

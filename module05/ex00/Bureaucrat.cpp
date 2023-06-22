@@ -26,7 +26,7 @@ Bureaucrat::Bureaucrat(std::string _name, int grade) : name(_name) {
   else if (grade > 150)
     throw Bureaucrat::GradeTooLowException();
   this->grade = grade;
-  std::cout << "Bureaucrat " << this->name << "has been created" << std::endl;
+  std::cout << "Bureaucrat " << this->name << " has been created" << std::endl;
 }
 
 Bureaucrat::~Bureaucrat() {
@@ -50,14 +50,14 @@ int Bureaucrat::getGrade() const { return this->grade; }
 std::string Bureaucrat::getName() const { return this->name; }
 
 std::ostream &operator<<(std::ostream &std, Bureaucrat const &b) {
-  std << b.getName() << " bureacrat grade " << b.getGrade() <<" .";
+  std << b.getName() << " bureacrat and his grade is " << b.getGrade() <<" .";
   return std;
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw() {
-  return ("You overrated the grade, which is limited in the range [1, 150]");
+  return ("the grade id too high, which is limited in the range [1, 150]");
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw() {
-  return ("You underrated the grade, which is limited in the range [1, 150]");
-}
+  return ("the grade is too low, which is limited in the range [1, 150]");
+} 

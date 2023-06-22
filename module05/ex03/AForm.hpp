@@ -19,27 +19,26 @@ public:
     AForm(const AForm &copy);
     ~AForm();
     AForm &operator=(const AForm &copy);
+
     std::string getName() const;
     bool        getSigned() const;
     int         getGradeToSign() const;
     int         getGradeToExecute() const;
-
-
     void        beSigned(const Bureaucrat &bureaucrat);
     virtual void        execute(const Bureaucrat &executor) const = 0;
 
     class FormNotSignedException : public std::exception {
         public:
-            const char* what() const throw();
+            virtual const char* what() const throw();
     };
 
     class GradeTooHighException : public std::exception {
         public:
-            const char* what() const throw();
+            virtual const char* what() const throw();
     };
     class GradeTooLowException : public std::exception {
         public:
-            const char* what() const throw();
+            virtual const char* what() const throw();
     };
 };
 
