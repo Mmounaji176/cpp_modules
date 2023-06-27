@@ -54,17 +54,18 @@ std::ostream &operator<<(std::ostream &std, Bureaucrat const &b) {
   return std;
 }
 
+
 const char *Bureaucrat::GradeTooHighException::what() const throw() {
-  return ("the grade is too high, which is limited in the range [1, 150]");
+  return ("You overrated the grade, which is limited in the range [1, 150]");
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw() {
-  return ("the grade is too low, which is limited in the range [1, 150]");
+  return ("You underrated the grade, which is limited in the range [1, 150]");
 }
 
 void  Bureaucrat::executeForm(AForm const & form) {
   if (form.getSigned() == false)
-    std::cout << "Form " << form.getName() << " is not signed" << std::endl;
+    throw AForm::FormNotSignedException();
   else if (form.getGradeToExecute() < this->grade)
     std::cout << "Bureaucrat " << this->name << " cannot execute form " << form.getName() << " because his grade is too low" << std::endl;
   else {

@@ -21,6 +21,8 @@ AForm::AForm(std::string name, int gradeToSign, int gradeToExecute) : name(name)
 }
 
 AForm&   AForm::operator=(const AForm &copy) {
+    if (this == &copy)
+        return *this;
     std::cout << "AForm assignation operator called" << std::endl;
     this->isSigned = copy.isSigned;
     return *this;

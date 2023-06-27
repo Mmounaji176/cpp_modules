@@ -1,10 +1,10 @@
-NAME=ex02
+NAME=ex03
 
 CPP=c++
 
 CPPFLAGS= -Wall -Wextra -Werror -std=c++98
 
-SRC= main Bureaucrat AForm PresidentialPardonForm PresidentialPardonForm ShrubberyCreationForm Intern\
+SRC= main Bureaucrat AForm PresidentialPardonForm RobotomyRequestForm ShrubberyCreationForm Intern\
 
 OBJ=$(SRC:=.o)
 

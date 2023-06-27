@@ -17,7 +17,7 @@ public:
     AForm();
     AForm(std::string name, int gradeToSign, int gradeToExecute);
     AForm(const AForm &copy);
-    ~AForm();
+    virtual ~AForm();
     AForm &operator=(const AForm &copy);
     std::string getName() const;
     bool        getSigned() const;
