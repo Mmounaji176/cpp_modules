@@ -1,6 +1,6 @@
 NAME=ex02
 
-SRCS=main.cpp A.cpp  B.cpp  C.cpp  Base.cpp
+SRCS=main.cpp
 
 OBJS=$(SRCS:.cpp=.o)
 

@@ -1,17 +1,22 @@
-#include "A.hpp"
-#include "B.hpp"
-#include "C.hpp"
+#include <iostream>
+
+class Base {
+    public:
+        virtual ~Base() {};
+};
+
+class A : public Base {};
+class B : public Base {};
+class C : public Base {};
 
 Base* generate() {
     int choice = std::rand() % 3;
-    switch (choice) {
-        case 0:
-            return new B();
-        case 1:
-            return new A();
-        case 2:
-            return new C();
-    }
+    if (choice == 0)
+        return new B();
+    else if (choice == 1)
+        return new A();
+    else
+        return new C();
     return nullptr;
 }
 
@@ -57,28 +62,18 @@ int     main( void )
     Base*   b = generate();
     Base*   c = generate();
     Base*   d = generate();
-
-    std::cout << "/* **************************************** */" << std::endl;
-
     std::cout << "a* = "; identify( a );
     std::cout << "a& = "; identify( *a ); 
     std::cout << std::endl;
-
     std::cout << "b* = "; identify( b );
     std::cout << "b& = "; identify( *b ); 
     std::cout << std::endl;
-
     std::cout << "c* = "; identify( c );
     std::cout << "c& = "; identify( *c );
     std::cout << std::endl;
-
     std::cout << "d* = "; identify( d );
     std::cout << "d& = "; identify( *d ); 
     std::cout << std::endl;
-
-    std::cout << "/* ***************************************** */" << std::endl;
-
-
     delete a;
     delete b;
     delete c;
