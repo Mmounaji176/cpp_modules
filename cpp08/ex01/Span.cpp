@@ -59,8 +59,8 @@ int Span::longestSpan(void)
 {
     if (this->_v.size() < 2)
         throw Span::NotEnoughNumbersException();
-    int max = *std::max_element(this->numbers.begin(), this->numbers.end());
-	int min = *std::min_element(this->numbers.begin(), this->numbers.end());
+    int max = *std::max_element(this->_v.begin(), this->_v.end());
+	int min = *std::min_element(this->_v.begin(), this->_v.end());
 	return (std::abs(max - min));
 }
 

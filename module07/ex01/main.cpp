@@ -46,9 +46,5 @@ int main( void )
 
     std::cout << "\narr4: " << std::endl;
     iter(arr4, N, &print);
-
-    testtt tab2[5];
-    iter(tab2, 5, print);
-    return 0;
 }
 

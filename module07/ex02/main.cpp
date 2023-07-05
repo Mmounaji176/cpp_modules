@@ -7,7 +7,7 @@ int main( void )
 {
     std::cout << "-----------------------------------------------------" << std::endl;
 
-    Array< float > test;
+    Array<float> test;
 
     Array< int > intArray( SIZE );
     Array< int > intArray2( SIZE - 5 );
