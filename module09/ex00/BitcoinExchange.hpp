@@ -16,6 +16,7 @@ class BitcoinExchange
         BitcoinExchange &operator=(const BitcoinExchange &other);
         void ReadDatabase();
         void PrintDatabase();
+        void ReadInput(std::string filename);
 };
 
 #endif
