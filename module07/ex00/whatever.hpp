@@ -2,6 +2,7 @@
 # define WHATVER_HPP
 
 #include <iostream>
+
 template <typename T>
 void	swap(T &a, T &b)
 {
@@ -13,13 +14,17 @@ void	swap(T &a, T &b)
 template <typename T>
 T		min(T a, T b)
 {
-    return (a < b ? a : b);
+    if (a < b)
+        return (a);
+    return (b);
 }
 
 template <typename T>
 T		max(T a, T b)
 {
-    return (a > b ? a : b);
+    if (a > b)
+        return (a);
+    return (b);
 }
 
 #endif

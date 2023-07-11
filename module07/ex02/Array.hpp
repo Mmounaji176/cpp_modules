@@ -8,43 +8,43 @@ template <typename T>
 class Array
 {
     private:
-        T *_array;
-        size_t _len;
+        T *array;
+        size_t len;
     public:
         Array(){
-            this->_len = 0;
-            this->_array = new T[0];
+            this->len = 0;
+            this->array = new T[0];
         }
         Array(unsigned int n){
-            this->_len = n;
-            this->_array = new T[n];
+            this->len = n;
+            this->array = new T[n];
         }
         Array(Array const &src){
-            this->_array = new T[src._len];
-            for (unsigned int i = 0; i < this->_len; i++)
-                this->_array[i] = src._array[i];
+            this->array = new T[src.len];
+            for (unsigned int i = 0; i < this->len; i++)
+                this->array[i] = src.array[i];
         }
         ~Array(void){
-            delete [] this->_array;
+            delete [] this->array;
         }
-        Array &operator=(Array const &rhs){
-            if (this != &rhs)
+        Array &operator=(Array const &obj){
+            if (this != &obj)
             {
-                delete [] this->_array;
-                this->_array = new T[rhs._len];
-                this->_len = rhs._len;
-                for (unsigned int i = 0; i < rhs._len; i++)
-                    this->_array[i] = rhs._array[i];
+                delete [] this->array;
+                this->array = new T[obj.len];
+                this->len = obj.len;
+                for (unsigned int i = 0; i < obj.len; i++)
+                    this->array[i] = obj.array[i];
             }
             return *this;
         }
         T &operator[](unsigned int n) const{
-            if (n >= _len)
+            if (n >= this->len)
                 throw OutOfBoundsException();
-            return _array[n];
+            return array[n];
         }
         unsigned int size(void) const{
-            return this->_len;
+            return this->len;
         }
         class OutOfBoundsException : public std::exception{
             public:
@@ -55,9 +55,9 @@ class Array
 };
 
 template <typename T>
-std::ostream &operator<<(std::ostream &o, Array<T> const &rhs){
-    for (unsigned int i = 0; i < rhs.size(); i++)
-        o << rhs[i] << " ";
+std::ostream &operator<<(std::ostream &o, Array<T> const &obj){
+    for (unsigned int i = 0; i < obj.size(); i++)
+        o << obj[i] << " | ";
     return o;
 }
 #endif

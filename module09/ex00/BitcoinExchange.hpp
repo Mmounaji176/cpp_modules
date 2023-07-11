@@ -1,14 +1,15 @@
 #ifndef BITCOINEXCHANGE_HPP
 #define BITCOINEXCHANGE_HPP
 
-#include <iostream>
+#include <iostream>  
+#include <string>
 #include <fstream>
 #include <map>
 
 class BitcoinExchange
 {
     private:
-        std::map<std::string, double> database;
+        std::map<std::string, float> database;
     public:
         BitcoinExchange();
         ~BitcoinExchange();
@@ -17,6 +18,8 @@ class BitcoinExchange
         void ReadDatabase();
         void PrintDatabase();
         void ReadInput(std::string filename);
+        int ParseInput(int year, int month, int day, float value, std::string line);
+        void PrintOutput(std::string input, float value);
 };
 
 #endif

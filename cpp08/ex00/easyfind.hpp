@@ -7,7 +7,6 @@
 # include <list>
 # include <deque>
 # include <set>
-# include <map>
 # include <stack>
 # include <queue>
 # include <exception>
@@ -16,7 +15,7 @@
 
 
 template <typename T>
-int easyfind(T &container, int n)
+int easyfind(T  &container, int n)
 {
     typename T::iterator it = std::find(container.begin(), container.end(), n);
     if (it == container.end())

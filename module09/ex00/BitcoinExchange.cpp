@@ -42,16 +42,16 @@ void BitcoinExchange::ReadDatabase()
         myfile >> line;
         std::string date = line.substr(0, line.find(','));
         std::string price = line.substr(line.find(',') + 1, line.length());
-        this->database.insert(std::make_pair(date, std::stod(price)));
+        this->database.insert(std::make_pair(date.substr(0,10).erase(4,1).erase(6,1), std::stof(price)));
     }
     myfile.close();
 }
 
 void BitcoinExchange::PrintDatabase()
 {
-    for (std::map<std::string, double>::iterator it = this->database.begin(); it != this->database.end(); it++)
+    for (std::map<std::string, float>::iterator it = this->database.begin(); it != this->database.end(); it++)
     {
-        std::cout << it->first << " => " << it->second << std::endl;
+        std::cout << it->first << " " << it->second << std::endl;
     }
 }
 
@@ -80,7 +80,88 @@ void    BitcoinExchange::ReadInput(std::string filename)
         std::string day = line.substr(8, 2);
         std::string price = line.substr(12, line.length());
         price.erase(remove(price.begin(), price.end(), ' '), price.end());
-        std::cout << std::atoi(year.c_str()) << "*" << std::atoi(month.c_str()) << "*" << std::atoi(day.c_str()) << " => " << std::atoi(price.c_str()) << std::endl;
+
+        int day_int = std::atoi(day.c_str());
+        int month_int = std::atoi(month.c_str());
+        int year_int = std::atoi(year.c_str());
+        float price_float = std::atof(price.c_str());
+        if (ParseInput(year_int, month_int, day_int, price_float, line) == -1)
+            continue ;
+        else
+        {
+            std::string fulldate;
+            if (month_int < 10 && day_int < 10)
+                fulldate = std::to_string(year_int * 10) + std::to_string(day_int * 10) + std::to_string(day_int);
+            else if (month_int < 10)
+                fulldate = std::to_string(year_int * 10) + std::to_string(month_int) + std::to_string(day_int);
+            else if (day_int < 10)
+                fulldate = std::to_string(year_int) + std::to_string(month_int * 10) + std::to_string(day_int);
+            else
+                fulldate = std::to_string(year_int) + std::to_string(month_int) + std::to_string(day_int);
+            PrintOutput(fulldate, price_float);
+        }
+
     }
     myfile.close();
+}
+
+int BitcoinExchange::ParseInput(int year, int month, int day, float value, std::string line)
+{
+    //date form 
+    if (line.substr(4,1) != "-" || line.substr(7,1) != "-")
+    {
+        std::cerr << "Invalid Date form" << std::endl;
+        return (-1);
+    }
+    //pipe
+    size_t pos = line.find('|');
+    if (line[pos -1] != ' ' || line[pos + 1] != ' ')
+    {
+        std::cerr << "Invalid pipe" << std::endl;
+        return -1;
+    }
+
+    int month_limits[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    if (year < 2009 || month < 1 || month > 12)
+    {
+        std::cerr << "Invalid Date Format\n";
+        return (-1);
+    }
+    if (day > month_limits[month - 1] || day < 1)
+    {
+        std::cerr << "Out of month range\n";
+        return (-1);
+    }
+    if (value < 0.00 || value > 1000.00 )
+    {
+        std::cerr << "Rate out of range\n";
+        return (-1);
+    }
+    return (0);
+}
+
+void BitcoinExchange::PrintOutput(std::string date, float value)
+{
+    std::map<std::string, float>::iterator it = this->database.begin();
+    std::map<std::string, float>::iterator ite = this->database.end();
+    bool found = false;
+
+    while (it != ite)
+    {
+        if (it->first == date)
+        {
+            found = true;
+            std::cout << date.insert(4,"-").insert(7,"-") << " => " << value << " = " << it->second * value << std::endl;
+            break ;
+        }
+        it++;
+    }
+    if (found == false)
+    {
+
+        std::map<std::string, float>::iterator end = this->database.lower_bound(date);
+           std::cout << value<< std::endl;
+        std::cout << end->second << std::endl;
+         std::cout << date.insert(4,"-").insert(7,"-") << " => " << value << " = " << end->first   << std::endl;
+    } 
 }

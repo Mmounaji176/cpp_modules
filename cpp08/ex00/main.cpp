@@ -18,7 +18,7 @@ int main(void)
 
     try
     {
-        std::cout << easyfind(v, 3) << std::endl;
+        std::cout << easyfind(v, -1) << std::endl;
         std::cout << easyfind(l, 6) << std::endl;
     }
     catch (std::exception &e)

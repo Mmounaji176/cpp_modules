@@ -3,6 +3,7 @@
 
 # include <stack>
 # include <deque>
+# include <iostream>
 
 template <typename T>
 class MutantStack : public std::stack<T>
@@ -26,13 +27,15 @@ class MutantStack : public std::stack<T>
                 std::stack<T>::operator=(rhs);
             return (*this);
         }
-        typedef typename std::stack<T>::container_type::iterator _iterator;
-        _iterator begin(void)
+        typedef typename std::stack<T>::container_type::iterator iterator;
+        iterator begin(void)
         {
             return (std::stack<T>::c.begin());
         }
-        _iterator end(void)
+        iterator end(void)
         {
             return (std::stack<T>::c.end());
         }
 };
+
+#endif
