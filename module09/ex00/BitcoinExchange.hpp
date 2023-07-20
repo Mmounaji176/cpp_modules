@@ -18,6 +18,7 @@ class BitcoinExchange
         void ReadDatabase();
         void PrintDatabase();
         void ReadInput(std::string filename);
+        int splitString(std::string line);
         int ParseInput(int year, int month, int day, float value, std::string line);
         void PrintOutput(std::string input, float value);
 };

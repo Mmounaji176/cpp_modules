@@ -56,6 +56,15 @@ void BitcoinExchange::PrintDatabase()
 }
 
 
+bool isNumber(std::string str)
+{
+    for (std::string::iterator it = str.begin(); it != str.end(); it++)
+    {
+        if (!isdigit(*it) && *it != '.')
+            return false;
+    }
+    return true;
+}
 void    BitcoinExchange::ReadInput(std::string filename)
 {
     std::ifstream myfile;
@@ -67,10 +76,15 @@ void    BitcoinExchange::ReadInput(std::string filename)
         return;
     }
     std::getline(myfile, line);
+    if (line != "date | value")
+    {
+        std::cerr << "Invalid input" << std::endl;
+        return ;
+    }
     while (!myfile.eof())
     {
         std::getline(myfile, line);
-        if (line.length() < 14)
+        if (line.length() < 14 || splitString(line) != 2)
         {
             std::cerr << "Invalid input" << std::endl;
             continue ;
@@ -81,6 +95,11 @@ void    BitcoinExchange::ReadInput(std::string filename)
         std::string price = line.substr(12, line.length());
         price.erase(remove(price.begin(), price.end(), ' '), price.end());
 
+        if (!isNumber(year) || !isNumber(month) || !isNumber(day) || !isNumber(price))
+        {
+            std::cerr << "Invalid input" << std::endl;
+            continue ;
+        }
         int day_int = std::atoi(day.c_str());
         int month_int = std::atoi(month.c_str());
         int year_int = std::atoi(year.c_str());
@@ -91,7 +110,7 @@ void    BitcoinExchange::ReadInput(std::string filename)
         {
             std::string fulldate;
             if (month_int < 10 && day_int < 10)
-                fulldate = std::to_string(year_int * 10) + std::to_string(day_int * 10) + std::to_string(day_int);
+                fulldate = std::to_string(year_int * 10) + std::to_string(month_int * 10) + std::to_string(day_int);
             else if (month_int < 10)
                 fulldate = std::to_string(year_int * 10) + std::to_string(month_int) + std::to_string(day_int);
             else if (day_int < 10)
@@ -107,20 +126,17 @@ void    BitcoinExchange::ReadInput(std::string filename)
 
 int BitcoinExchange::ParseInput(int year, int month, int day, float value, std::string line)
 {
-    //date form 
     if (line.substr(4,1) != "-" || line.substr(7,1) != "-")
     {
         std::cerr << "Invalid Date form" << std::endl;
         return (-1);
     }
-    //pipe
     size_t pos = line.find('|');
     if (line[pos -1] != ' ' || line[pos + 1] != ' ')
     {
         std::cerr << "Invalid pipe" << std::endl;
         return -1;
     }
-
     int month_limits[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     if (year < 2009 || month < 1 || month > 12)
     {
@@ -142,26 +158,24 @@ int BitcoinExchange::ParseInput(int year, int month, int day, float value, std::
 
 void BitcoinExchange::PrintOutput(std::string date, float value)
 {
-    std::map<std::string, float>::iterator it = this->database.begin();
-    std::map<std::string, float>::iterator ite = this->database.end();
-    bool found = false;
-
-    while (it != ite)
+    if (date < this->database.begin()->first)
     {
-        if (it->first == date)
-        {
-            found = true;
-            std::cout << date.insert(4,"-").insert(7,"-") << " => " << value << " = " << it->second * value << std::endl;
-            break ;
-        }
-        it++;
+        std::cout << "invalid input" << std::endl;
+        return ;
     }
-    if (found == false)
-    {
+    std::map<std::string, float>::iterator val = this->database.upper_bound(date);
+    val--;
+    std::cout << date.insert(4,"-").insert(7,"-") << " => " << value << " " << " = " << value * val->second  << std::endl;
+}
 
-        std::map<std::string, float>::iterator end = this->database.lower_bound(date);
-           std::cout << value<< std::endl;
-        std::cout << end->second << std::endl;
-         std::cout << date.insert(4,"-").insert(7,"-") << " => " << value << " = " << end->first   << std::endl;
-    } 
+
+int    BitcoinExchange::splitString(std::string line){
+    std::string delimiter = " ";
+    size_t pos = 0;
+    int i = 0;
+    while ((pos = line.find(delimiter)) != std::string::npos) {
+        i++;
+        line.erase(0, pos + delimiter.length());
+    }
+    return i;
 }
